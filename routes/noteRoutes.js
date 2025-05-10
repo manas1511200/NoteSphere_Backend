@@ -16,9 +16,10 @@ router.get('/:id', noteController.getNoteById);
 router.put('/:id', upload.single('file'), noteController.updateNote);
 router.delete('/:id', noteController.deleteNote);
 
-// Filtering endpoints
 router.get('/user/:userId', noteController.getNotesByUserId);
 router.get('/subject/:subject', noteController.getNotesBySubject);
 router.get('/search/:query', noteController.searchNotes);
+router.get('/download/:id', noteController.downloadPDF);
+router.get('/view/:id', noteController.viewPDF);
 
 module.exports = router;

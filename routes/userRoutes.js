@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/UserController');
-const { validate } = require('../middleware/auth');
+const { validate, verifyToken } = require('../middleware/auth');
 const { check } = require('express-validator');
+const profileUpload = require('../config/profileMulter');
 
 router.post(
   '/register',
@@ -17,9 +18,13 @@ router.post(
   userController.register
 );
 
+router.post('/login', userController.login);
+
 router.post(
-  '/login',
-  userController.login
+  '/upload-profile-photo',
+  verifyToken,
+  profileUpload.single('profilePhoto'),
+  userController.uploadProfilePhoto
 );
 
 module.exports = router;

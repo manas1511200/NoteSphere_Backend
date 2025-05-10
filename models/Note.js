@@ -7,6 +7,7 @@ const noteSchema = new Schema({
   topics: [{ type: String }],
   filePath: { type: String },
   user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  stars: { type: Number, default: 0 },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Note', noteSchema);

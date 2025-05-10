@@ -7,7 +7,8 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   role: { type: String, required: true },
   college: { type: String, required: true },
-  profilePhotoUri: { type: String },
+  profilePhotoPath: { type: String }, // Stores file path for profile photo
+  description: { type: String },
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
